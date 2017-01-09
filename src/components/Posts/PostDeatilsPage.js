@@ -106,7 +106,7 @@ export default class PostDetailsPage extends Component{
                     postId={this.state.postId}
                     title={this.state.title}
                     author={this.state.author}
-                    date={this.state.date.slice(0,33)}
+                    date={this.state.date.slice(0,28)}
                     description={this.state.description}
                     countVisited={this.state.countVisited}
                     imageUrl={this.state.imageUrl}

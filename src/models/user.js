@@ -60,6 +60,7 @@ function logout(callback) {
     }
 }
 
+
 function joinTeam(teamId, callback) {
     let userData = {
         username: sessionStorage.getItem('username'),

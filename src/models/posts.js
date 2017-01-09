@@ -12,6 +12,60 @@ function loadPosts(callback){
     
 }
 
+
+
+function findLatestPosts(callback) {
+    if(sessionStorage.getItem('username')){
+        get('appdata', 'posts/?query={}&sort={"_kmd":-1}&limit=6', 'kinvey')
+            .then(callback)
+    } else {
+        get('appdata', 'posts/?query={}&sort={"_kmd":-1}&limit=6', 'guestUser')
+            .then(callback)
+    }
+}
+
+function findMostVisitedPosts(callback){
+    //The function sorts the posts by two criterias: 1st.-visitCounts, 2nd.-date
+    function sortPosts(a, b) {
+        let visitCountA = a.countVisited;
+        let visitCountB = b.countVisited;
+        let dateA = new Date(a._kmd).getTime();
+        let dateB = new Date(b._kmd).getTime();
+        let countDifference = visitCountA - visitCountB
+        if( countDifference !== 0){
+            return countDifference
+        }
+        return Number(dateA) - Number(dateB);
+    };
+
+    //Requesting the records for posts visits count from collection 'postViewsLikes'
+    get('appdata', 'postViewsLikes/', 'kinvey')
+        .then(function(response){
+            //arrRequests will keep 5-get requests for the most visited posts.
+            //Why: To ensure sequence matching btw. the requests sent and returned by Kinvey responses.
+
+            let arrRequests = []
+            let postsRecordsSortedByVisit_Date = response.sort(sortPosts).reverse().slice(0,5);
+            let sortedPosts = []
+            //console.log(postsRecordsSortedByVisit_Date)
+
+            //Generating 5 separate 'GET' requests and save them in the array 'arrRequests'
+            for(let element of postsRecordsSortedByVisit_Date){
+                arrRequests.push(get('appdata', 'posts/' + element.postId, 'kinvey'))
+            }
+
+            //Sending the 5-requests package.
+            Promise.all(arrRequests)
+                .then(function(resp){
+                    sortedPosts = resp.map((post, index) => [post, postsRecordsSortedByVisit_Date[index]]);
+                    callback(sortedPosts)
+                });
+
+
+        })
+    
+}
+
 function createPost(title, author, imageUrl, description, callback) {
     let postData = {
         title: title,
@@ -102,4 +156,4 @@ function deletePost(postId, callback, that){
         });
 }
 
-export{loadPosts, loadPostDeatils, editPost, deletePost, createPost, addPostComment, updateLikes}
+export{loadPosts, loadPostDeatils, editPost, deletePost, createPost, addPostComment, updateLikes, findLatestPosts, findMostVisitedPosts}

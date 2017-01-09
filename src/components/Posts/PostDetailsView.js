@@ -34,20 +34,22 @@ export default class PostDetailsView extends Component {
 
         return (
             <div className="details-view">
-                <input type="button" value="Back to Posts" className="btn btn-lg btn-primary"
+                <input type="button" value="Back" className="btn btn-lg btn-primary"
                        onClick={this.props.backToPosts}/>
                 <h1>{this.props.title}</h1>
-                <b>Posted by:</b><span style={{marginLeft:'10px'}}>{this.props.author}</span>
+                <p><b>Posted by:</b><span style={{marginLeft:'10px'}}>{this.props.author}</span></p>
                 <br/>
-                <b>Date:</b><span style={{marginLeft:'45px'}}>{this.props.date}</span>
+                <p><b>Date:</b><span style={{marginLeft:'45px'}}>{this.props.date}</span></p>
                 <br/>
                 <img src={this.props.imageUrl} style={{width:'240px', height:'180px', margin:"20px"}} alt=""/>
                 <div><span className="postContent">Post content:</span> 
                     <p className="cont">{this.props.description}</p>
                 </div>
-                <b>Times visited:</b><span style={{marginLeft:'10px'}}>{this.props.countVisited}</span><br/>
-                <b>Likes:</b><span style={{marginLeft:'10px'}}>{this.props.likes[0] === "empty" ? 0 : this.props.likes.length}</span>
-                    {likeBtn}
+                <br/>
+                <p><b>Times visited:</b><span style={{marginLeft:'10px'}}>{this.props.countVisited}</span></p>
+                <br/>
+                <p><b>Likes:</b><span style={{marginLeft:'10px'}}>{this.props.likes[0] === "empty" ? 0 : this.props.likes.length}</span>
+                    {likeBtn}</p>
                 <br/>
                 <div>
                     {commentsRow}

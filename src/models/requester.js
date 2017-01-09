@@ -11,6 +11,8 @@ function makeAuth(type) {
             return { 'Authorization': "Basic " + btoa(kinveyAppKey + ":" + kinveyAppSecret) };
         case 'kinvey':
             return { 'Authorization': "Kinvey " + sessionStorage.getItem('authToken') };
+        case 'guestUser':
+            return { 'Authorization': "Kinvey ea334f5e-5719-4d63-bf93-9d9cbcd83fa9.WEiFXXETAvIVSfWQ9A/Il9v/7FC1ZSZmnBZDYG3A9qQ=" }
         default: break;
     }
 }
