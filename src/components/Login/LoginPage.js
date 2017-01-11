@@ -5,7 +5,7 @@ import {login} from '../../models/user';
 export default class LoginPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: '', password: '', submitDisabled: false };
+        this.state = { username: '', password: '', isDeleted:'', submitDisabled: false };
         this.bindEventHandlers();
 
     }
@@ -31,7 +31,7 @@ export default class LoginPage extends Component {
     }
 
     onSubmitHandler(event) {
-        event.preventDefault();
+        event.preventDefault();        
         this.setState({ submitDisabled: true });
         login(this.state.username, this.state.password, this.onSubmitResponse);
     }
@@ -49,7 +49,7 @@ export default class LoginPage extends Component {
     render() {
         return (
             <div>
-                <span>Login Page</span>
+                <h3>Login Page</h3>
                 <LoginForm
                     username={this.state.username}
                     password={this.state.password}

@@ -70,7 +70,7 @@ export default class DeletePostPage extends Component{
                     submitButtonName={"Delete post"}
                     cancelButton={this.cancelEditDelete.bind(this)}
                     //Adding Delete button color property
-                    className={"btn btn-lg btn-danger btn-block"}
+                    className={"btn btn-danger"}
                 />
             </div>
         )

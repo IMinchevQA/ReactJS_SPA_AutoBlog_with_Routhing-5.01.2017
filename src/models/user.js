@@ -25,16 +25,24 @@ function login(username, password, callback) {
         .then(loginSuccess);
 
     function loginSuccess(userInfo) {
-        saveSession(userInfo);
-        callback(true);
+        if(userInfo.isDeleted === "false") {
+            saveSession(userInfo);
+            callback(true);
+        } else {
+            alert("User is deleted please contact with the administrator!")
+            callback(false);
+        }
     }
 }
 
 // user/register
-function register(username, password, callback) {
+function register(username, fullname, password, repeat, roles, isDeleted, callback) {
     let userData = {
         username,
-        password
+        fullname,
+        password,
+        repeat,
+        roles, isDeleted
     };
 
     requester.post('user', '', userData, 'basic')
@@ -60,31 +68,26 @@ function logout(callback) {
     }
 }
 
+function loadAllUsers(callback){    
+    requester.get('user', '', 'kinvey')
+        .then(callback)
 
-function joinTeam(teamId, callback) {
-    let userData = {
-        username: sessionStorage.getItem('username'),
-        teamId: teamId
-    };
-    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
-        .then((response) => {
-            saveSession(response);
-            observer.onSessionUpdate();
-            callback(true);
-        });
 }
 
-function leaveTeam(callback) {
-    let userData = {
-        username: sessionStorage.getItem('username'),
-        teamId: ''
-    };
-    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
-        .then((response) => {
-            saveSession(response);
-            observer.onSessionUpdate();
-            callback(true);
-        });
+function loadUserDetails(userId, callback){
+    requester.get('user', userId, 'kinvey')
+        .then(callback)
+
 }
 
-export {login, register, logout, joinTeam, leaveTeam};
+function editUser(userId, username, fullname, roles, password, repeat, isDeleted, callback, that){
+    let userData ={ username, fullname, roles, password, repeat, isDeleted };
+
+    requester.update('user', userId, userData, 'kinvey')
+        .then(function(response){
+            callback(response, that)
+        })
+}
+
+
+export {login, register, logout, loadAllUsers, loadUserDetails, editUser};

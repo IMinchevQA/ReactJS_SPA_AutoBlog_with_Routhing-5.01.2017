@@ -59,20 +59,24 @@ export default class EditDeletePostForm extends Component {
                                     onChange={this.props.onChangeHandler}
                                     autoFocus="autoFocus"
                                 />
-
-
-
-                                    <span>
-                                        <input
-                                            className={this.props.className}
-                                            style={{ marginLeft:'5px'}}
-                                            type="submit"
-                                            value={this.props.submitButtonName}
-                                            disabled={this.props.submitDisabled}/>
-                                    </span>                                &nbsp;
-                                <span><input type="button" style={{marginTop:'10px', width:'120px', height:'45px'}}
-                                             value="Cancel" className="btn btn-primary"
-                                             onClick={this.props.cancelButton}/></span>
+                                <span>
+                                    <input
+                                        className={this.props.className}
+                                        style={{ marginLeft:'5px', width:'120px', height:'40px', textAlign:'center'}}
+                                        type="submit"
+                                        value={this.props.submitButtonName}
+                                        disabled={this.props.submitDisabled}
+                                    />
+                                </span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span>
+                                    <input 
+                                        type="button" 
+                                        style={{width:'120px', height:'40px'}}
+                                        value="Cancel" className="btn btn-primary"
+                                        onClick={this.props.cancelButton}
+                                    />
+                                </span>
                             </form>
                         </div>
                     </div>

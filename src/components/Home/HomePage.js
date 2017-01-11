@@ -23,22 +23,8 @@ export default class HomePage extends Component {
     }
 
     onloadMostVisitedPostsSuccess(response){
-        this.setState({mostVisitedPosts:response})
-        console.log(this.state)
+        this.setState({mostVisitedPosts:response});
     }
-
-    //The function sorts the posts by two criterias: 1st.-visitCounts, 2nd.-date
-    // sortPosts(a, b) {
-    //     let visitCountA = a.countVisited;
-    //     let visitCountB = b.countVisited;
-    //     let dateA = new Date(a._kmd).getTime();
-    //     let dateB = new Date(b._kmd).getTime();
-    //     let countDifference = visitCountA - visitCountB
-    //     if( countDifference !== 0){
-    //         return countDifference
-    //     }
-    //     return Number(dateA) - Number(dateB);
-    // };
 
 
     componentDidMount() {

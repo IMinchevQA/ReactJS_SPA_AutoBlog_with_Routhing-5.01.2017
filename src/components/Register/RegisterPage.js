@@ -5,7 +5,7 @@ import {register} from '../../models/user';
 export default class RegisterPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: '', password: '', repeat: '', submitDisabled: false };
+        this.state = { username: '', password: '', repeat: '', fullname:'', roles:'user', isDeleted:'false', submitDisabled: false };
         this.bindEventHandlers();
     }
 
@@ -20,6 +20,9 @@ export default class RegisterPage extends Component {
         switch (event.target.name) {
             case 'username':
                 this.setState({ username: event.target.value });
+                break;
+            case 'fullname':
+                this.setState({ fullname: event.target.value });
                 break;
             case 'password':
                 this.setState({ password: event.target.value });
@@ -39,10 +42,11 @@ export default class RegisterPage extends Component {
             return;
         }
         this.setState({ submitDisabled: true });
-        register(this.state.username, this.state.password, this.onSubmitResponse);
+        register(this.state.username, this.state.fullname, this.state.password, this.state.repeat, this.state.roles, this.state.isDeleted, this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {
+        console.log(response)
         if (response === true) {
             // Navigate away from register page
             this.context.router.push('/');
@@ -55,9 +59,10 @@ export default class RegisterPage extends Component {
     render() {
         return (
             <div>
-                <span>Login Page</span>
+                <h3>Register Page</h3>
                 <RegisterForm
                     username={this.state.username}
+                    fullname={this.state.fullname}
                     password={this.state.password}
                     repeat={this.state.repeat}
                     submitDisabled={this.state.submitDisabled}

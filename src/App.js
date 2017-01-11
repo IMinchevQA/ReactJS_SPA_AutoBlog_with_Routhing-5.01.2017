@@ -26,23 +26,24 @@ class App extends Component {
     }    
 
     render() {
+
         let navbar = {};
         if (!this.state.loggedIn) {
             navbar = (
                     <Navbar>
                         <Link to="/" className="btn btn-default" activeClassName="btn btn-default active" onlyActiveOnIndex={true}>Home</Link>
-                        <Link to="/about" className="btn btn-default" activeClassName="btn btn-default active">About</Link>
                         <Link to="/login" className="btn btn-default" activeClassName="btn btn-default active">Login</Link>
                         <Link to="/register" className="btn btn-default" activeClassName="btn btn-default active">Register</Link>
                     </Navbar>
                 );
         } else {
+            let userRole = sessionStorage.getItem('role');
             navbar = (
                 <Navbar>
                     <Link to="/" className="btn btn-default" activeClassName="btn btn-default active" onlyActiveOnIndex={true}>Home</Link>
-                    <Link to="/catalog" className="btn btn-default" activeClassName="btn btn-default active">Catalog</Link>
+                    <Link to="/users" className="btn btn-default" activeClassName="btn btn-default active"
+                          style={{'display': userRole === 'admin' ||  userRole === 'moderator' ? '' : 'none'}}>Users</Link>
                     <Link to={"/posts/" + 1} className="btn btn-default" activeClassName="btn btn-default active">Posts</Link>
-                    <Link to="/about" className="btn btn-default" activeClassName="btn btn-default active">About</Link>
                     <Link to="/logout" className="btn btn-default" activeClassName="btn btn-default active">Logout</Link>
                 </Navbar>
             );

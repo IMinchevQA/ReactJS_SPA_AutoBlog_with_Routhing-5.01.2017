@@ -10,7 +10,20 @@ export default class RegisterForm extends Component {
                         className="form-control"
                         type="text"
                         name="username"
+                        required
                         value={this.props.username}
+                        disabled={this.props.submitDisabled}
+                        onChange={this.props.onChangeHandler}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Fullname:</label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="fullname"
+                        required
+                        value={this.props.fullname}
                         disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}
                     />
@@ -21,6 +34,7 @@ export default class RegisterForm extends Component {
                         className="form-control"
                         type="password"
                         name="password"
+                        required
                         value={this.props.password}
                         disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}
@@ -32,6 +46,7 @@ export default class RegisterForm extends Component {
                         className="form-control"
                         type="password"
                         name="repeat"
+                        required
                         value={this.props.repeat}
                         disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}

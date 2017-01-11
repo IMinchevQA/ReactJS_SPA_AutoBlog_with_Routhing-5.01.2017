@@ -31,11 +31,11 @@ export default class EditPostPage extends Component {
             imageUrl:response.imageUrl,
             submitDisabled:false
         });
-        console.log(this.state)
     }
 
     onChangeHandler(event) {
         event.preventDefault();
+        console.log(event.target.name)
         let newState = {};
         newState[event.target.name] = event.target.value;
         this.setState(newState);
@@ -85,7 +85,7 @@ export default class EditPostPage extends Component {
                     submitButtonName={"Submit changes"}
                     cancelButton={this.cancelEditDelete.bind(this)}
                     //Adding Edit button color property
-                    className={'btn btn-lg btn-primary btn-block'}
+                    className={'btn btn-primary'}
                 />
             </div>
         );
