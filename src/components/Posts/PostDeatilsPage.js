@@ -102,7 +102,7 @@ export default class PostDetailsPage extends Component{
     
     render(){
         let view = {
-            postDetails: (<div>
+            postDetails: (<div class="container">
                 <PostDetailsView
                     postId={this.state.postId}
                     title={this.state.title}
@@ -119,7 +119,7 @@ export default class PostDetailsPage extends Component{
                     addCommentCl={this.addCommentBtnClicked.bind(this)}
                 />
             </div>),
-            addPostComment:(<div>
+            addPostComment:(<div class="container">
                 <AddPostCommentForm
                     postId={this.state.postId}
                     title={this.state.title}

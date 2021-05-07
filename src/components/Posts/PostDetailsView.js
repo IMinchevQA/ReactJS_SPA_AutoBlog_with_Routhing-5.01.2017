@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/PostDetailsView.css';
+import '../../styles/PostDetailsView.scss';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 
 

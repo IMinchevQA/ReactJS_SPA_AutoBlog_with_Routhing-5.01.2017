@@ -69,7 +69,7 @@ export default class EditPostPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h1>Edit post page</h1>
                 <EditDeletePostForm
                     postId={this.state.postId}
@@ -85,7 +85,7 @@ export default class EditPostPage extends Component {
                     submitButtonName={"Submit changes"}
                     cancelButton={this.cancelEditDelete.bind(this)}
                     //Adding Edit button color property
-                    className={'btn btn-primary'}
+                    className={'btn btn-success'}
                 />
             </div>
         );

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import RegisterForm from './RegisterForm';
 import {register} from '../../models/user';
 import { PropTypes } from 'prop-types';
+// import '../../styles/Forms-Style.scss';
 
 export default class RegisterPage extends Component {
     constructor(props) {
@@ -58,7 +59,7 @@ export default class RegisterPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container register-page">
                 <h3>Register Page</h3>
                 <RegisterForm
                     username={this.state.username}

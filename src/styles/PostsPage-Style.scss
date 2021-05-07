@@ -1,0 +1,25 @@
+@import './definitions.scss';
+@import './mixins.scss';
+
+
+.table-responsive {
+    > .btn {
+        width: 9.5rem;
+        margin-bottom: 1rem;
+    }  
+
+    .btn {
+        white-space: pre-wrap;
+        text-align: center;
+    }
+
+    &~div {
+        .pagination {
+            @include flex-box;
+            @include flex-box-justify-content(center);
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid $blue;
+        }
+    }
+}

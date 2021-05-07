@@ -49,7 +49,7 @@ export default class LoginPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container login-page">
                 <h3>Login Page</h3>
                 <LoginForm
                     username={this.state.username}

@@ -1,6 +1,8 @@
+@import './definitions.scss';
+
 .details-view,.add-post-comment-form,.delete-post-form {
-    background-color: #CCC;
-    padding: 20px;
+    background-color: $postsGrey;
+    padding: 1.25rem;
     opacity: 0.9;
 }
 .details-view h1{

@@ -55,7 +55,7 @@ export default class DeletePostPage extends Component{
 
     render(){
         return(
-            <div>
+            <div class="container">
                 <h1>Delete post page</h1>
                 <EditDeletePostForm
                     postId={this.state.postId}

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+// import '../../styles/Forms-Style.scss';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 
 
 export default class EditDeletePostForm extends Component {
     render() {
         return (
-            <div className="container">
                 <div className="row">
-                    <div className="col-sm-6 col-md-4 col-md-offset-2">
+                    <div className="col-sm-12 col-md-6 col-md-offset-2">
                         <div className="account-wall">
                             <img className="profile-img"
                                  src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
@@ -59,29 +59,23 @@ export default class EditDeletePostForm extends Component {
                                     onChange={this.props.onChangeHandler}
                                     autoFocus="autoFocus"
                                 />
-                                <span>
+                                <div className="edit-buttons-wrapper">
                                     <input
-                                        className={this.props.className + ' create-post-btn'}
-                                        style={{ marginLeft:'5px', width:'120px', height:'40px', textAlign:'center'}}
+                                        className={`btn ${this.props.className}`}
                                         type="submit"
                                         value={this.props.submitButtonName}
                                         disabled={this.props.submitDisabled}
                                     />
-                                </span>
-                                &nbsp;&nbsp;&nbsp;
-                                <span>
                                     <input 
-                                        type="button" 
-                                        style={{width:'120px', height:'40px'}}
-                                        value="Cancel" className="btn btn-primary"
+                                        className="btn btn-primary"
+                                        type="button"
+                                        value="Cancel"
                                         onClick={this.props.cancelButton}
                                     />
-                                </span>
+                                </div>
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>);
-
+                </div>);
     }
 }

@@ -1,0 +1,85 @@
+@import './mixins.scss';
+@import './definitions.scss';
+
+form {
+    padding: 1rem;
+
+    .form-control {
+        /*width: 100%;*/
+        font-size: 1rem;
+        height: auto;
+        padding: 0.75rem;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+         &:focus {
+            z-index: 2;
+         }
+    }
+
+    input, textarea {
+        width: 100%;
+        height: 3.75rem;
+        margin-bottom: 0.75rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        
+        &[type="text"] {
+            margin-bottom: -1px;
+        }       
+    }
+
+    .edit-buttons-wrapper {
+        @include flex-box;
+        @include flex-box-justify-content(space-between);
+        .btn {
+            white-space: pre-wrap;
+            max-width: 7.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+        }
+    }
+    
+
+    &.login-form, &.register-form {
+        input.btn {
+            white-space: pre-wrap;
+            max-width: 7.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            line-height: 1rem;
+            max-height: 2.5rem;
+            padding: 0.5rem;
+        }
+    }
+}
+.account-wall {
+    margin-top: 1.25rem;
+    padding: 2.5rem 0rem 1.25rem 0rem;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+    .profile-img {
+        width: 6rem;
+        height: 6rem;
+        margin: 0 auto 10px;
+        display: block;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+}
+
+.form-signin>textarea,.add-comment {
+    resize: none;
+}
+
+.btn .btn-lg .btn-primary .btn-block,.btn-add {
+    width: 22%;
+}
+
+.table-responsive > h1 {
+    color: $postsGrey;
+}

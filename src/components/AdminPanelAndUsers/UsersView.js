@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
-// import '../styles/buttons.css';
 
 export default class UsersView extends Component {
     render() {
