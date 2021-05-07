@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import UsersView from './UsersView'
 import {loadAllUsers} from '../../models/user'
+import { PropTypes } from 'prop-types'; 
 
 export default class AdminPanelPage extends Component {
     constructor(props){
@@ -39,5 +40,5 @@ export default class AdminPanelPage extends Component {
 }
 
 AdminPanelPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

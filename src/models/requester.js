@@ -2,8 +2,8 @@ import $ from 'jquery';
 
 
 const kinveyBaseUrl = "https://baas.kinvey.com/";
-const kinveyAppKey = "kid_SkjtoqOfg";
-const kinveyAppSecret = "6c9bdb78676f46c1a2f18a0a7aa056d0";
+const kinveyAppKey = "kid_HyviOwMOd";
+const kinveyAppSecret = "06e098e864c74fe2b926d8afdd6d3487";
 
 function makeAuth(type) {
     switch (type) {

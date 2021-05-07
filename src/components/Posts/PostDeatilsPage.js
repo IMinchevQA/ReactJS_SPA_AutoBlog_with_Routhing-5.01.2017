@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {loadPostDeatils, addPostComment, updateLikes} from '../../models/posts';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import PostDetailsView from './PostDetailsView';
+import { PropTypes } from 'prop-types';
 import AddPostCommentForm from './AddPostCommentForm'
 
 export default class PostDetailsPage extends Component{
@@ -13,7 +14,7 @@ export default class PostDetailsPage extends Component{
     }
     
     componentDidMount(){
-        loadPostDeatils(this.props.params.postId, this.onloadSuccess);
+        loadPostDeatils(this.props.match.params.postId, this.onloadSuccess);
     }
     
     bindEventsHandler(){
@@ -48,9 +49,9 @@ export default class PostDetailsPage extends Component{
         if(response !== undefined){
             //Navigate consecutively to the Home and to the detailsPost pages
             //Why: The new just added comment does not appear if navigate directly to the current detailsPost page!!!
-            this.context.router.goBack();
-            // this.context.router.push('/');
-            // this.context.router.push('/detailsPost/' + this.state.postId);
+            this.props.history.push('/');
+            this.props.history.push('/detailsPost/' + this.state.postId)
+            this.setState({viewName:'postDetails'})
         } else {
             //Something went wrong, let the user try again
             this.setState({submitDisabled: true});
@@ -66,13 +67,13 @@ export default class PostDetailsPage extends Component{
 
     cancelBtnClicked(event){
         event.preventDefault();
-        this.context.router.push('/detailsPost/' + this.state.postId);
+        this.props.history.push('/detailsPost/' + this.state.postId);
         this.setState({viewName:'postDetails'})
     }
 
     addCommentBtnClicked(event){
         event.preventDefault();
-        this.context.router.push('/detailsPost/' + this.state.postId + '/addPostComment');
+        this.props.history.push('/detailsPost/' + this.state.postId + '/addPostComment');
         this.setState({viewName:'addPostComment'});
     }
 
@@ -93,7 +94,7 @@ export default class PostDetailsPage extends Component{
 
     backBtnClicked(event){
         event.preventDefault();
-        this.context.router.goBack();
+        this.props.history.goBack();
     }
 
     
@@ -143,5 +144,5 @@ export default class PostDetailsPage extends Component{
 }
 
 PostDetailsPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

@@ -34,7 +34,7 @@ export default class LoginForm extends Component {
                                     onChange={this.props.onChangeHandler}
                                 />
                             </div>
-                            <input className="btn btn-default" type="submit" value="Login" disabled={this.props.submitDisabled}/>
+                            <input className="btn btn-primary" type="submit" value="Login" disabled={this.props.submitDisabled}/>
                         </form>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ export default class Details extends Component {
     }
 
     statusChange(response) {
-        this.context.router.push('/');
+        this.props.history.push('/');
     }
 
     componentDidMount() {

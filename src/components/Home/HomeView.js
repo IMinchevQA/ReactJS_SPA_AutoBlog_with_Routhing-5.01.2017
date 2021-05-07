@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../../styles/Forms-Style.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../../styles/HomePage-Style.css'
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 export default class HomeView extends Component{
     render(){

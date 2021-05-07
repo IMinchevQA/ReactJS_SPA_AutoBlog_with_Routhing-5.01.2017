@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import EditDeleteUserForm from './EditUserForm';
 import {loadUserDetails, editUser} from '../../models/user';
+import { PropTypes } from 'prop-types'; 
 
 
 export default class EditUserPage extends Component{
@@ -58,7 +59,7 @@ export default class EditUserPage extends Component{
     onSubmitResponse(response, that){
         if (response !== undefined) {
             // Navigate to the Posts page;
-            that.context.router.goBack();
+            that.props.history.goBack();
 
         } else {
             // Something went wrong, let the user try again
@@ -68,7 +69,7 @@ export default class EditUserPage extends Component{
 
     cancelEditDelete(event){
         event.preventDefault();
-        this.context.router.goBack();
+        this.props.history.goBack();
         // this.setState({submitDisabled: false});
     }
 
@@ -92,5 +93,5 @@ export default class EditUserPage extends Component{
 }
 
 EditUserPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 }

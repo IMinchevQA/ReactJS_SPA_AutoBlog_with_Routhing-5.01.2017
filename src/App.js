@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from './components/common/Header';
 import Navbar from './components/common/Navbar';
 import Infobox from  './components/common/Infobox';
-import {Link} from 'react-router';
+import { NavLink } from 'react-router-dom';
 import observer from './models/observer';
 
 class App extends Component {
@@ -31,20 +31,20 @@ class App extends Component {
         if (!this.state.loggedIn) {
             navbar = (
                     <Navbar>
-                        <Link to="/" className="btn btn-default" activeClassName="btn btn-default active" onlyActiveOnIndex={true}>Home</Link>
-                        <Link to="/login" className="btn btn-default" activeClassName="btn btn-default active">Login</Link>
-                        <Link to="/register" className="btn btn-default" activeClassName="btn btn-default active">Register</Link>
+                        <NavLink to="/" className="btn btn-default" activeClassName="btn btn-default active">Home</NavLink>
+                        <NavLink to="/login" className="btn btn-default" activeClassName="btn btn-default active">Login</NavLink>
+                        <NavLink to="/register" className="btn btn-default" activeClassName="btn btn-default active">Register</NavLink>
                     </Navbar>
                 );
         } else {
             let userRole = sessionStorage.getItem('role');
             navbar = (
                 <Navbar>
-                    <Link to="/" className="btn btn-default" activeClassName="btn btn-default active" onlyActiveOnIndex={true}>Home</Link>
-                    <Link to="/users" className="btn btn-default" activeClassName="btn btn-default active"
-                          style={{'display': userRole === 'admin' ||  userRole === 'moderator' ? '' : 'none'}}>Users</Link>
-                    <Link to={"/posts/" + 1} className="btn btn-default" activeClassName="btn btn-default active">Posts</Link>
-                    <Link to="/logout" className="btn btn-default" activeClassName="btn btn-default active">Logout</Link>
+                    <NavLink to="/" className="btn btn-default" activeClassName="btn btn-default active">Home</NavLink>
+                    <NavLink to="/users" className="btn btn-default" activeClassName="btn btn-default active"
+                          style={{'display': userRole === 'admin' ||  userRole === 'moderator' ? '' : 'none'}}>Users</NavLink>
+                    <NavLink to={"/posts/" + 1} className="btn btn-default" activeClassName="btn btn-default active">Posts</NavLink>
+                    <NavLink to="/logout" className="btn btn-default" activeClassName="btn btn-default active">Logout</NavLink>
                 </Navbar>
             );
         }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LoginForm from './LoginForm';
 import {login} from '../../models/user';
+import { PropTypes } from 'prop-types';
 
 export default class LoginPage extends Component {
     constructor(props) {
@@ -39,7 +40,7 @@ export default class LoginPage extends Component {
     onSubmitResponse(response) {
         if (response === true) {
             // Navigate away from login page
-            this.context.router.push('/');
+            this.props.history.push('/');
         } else {
             // Something went wrong, let the user try again
             this.setState({ submitDisabled: true });
@@ -63,5 +64,5 @@ export default class LoginPage extends Component {
 }
 
 LoginPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

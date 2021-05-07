@@ -61,7 +61,7 @@ export default class EditDeletePostForm extends Component {
                                 />
                                 <span>
                                     <input
-                                        className={this.props.className}
+                                        className={this.props.className + ' create-post-btn'}
                                         style={{ marginLeft:'5px', width:'120px', height:'40px', textAlign:'center'}}
                                         type="submit"
                                         value={this.props.submitButtonName}

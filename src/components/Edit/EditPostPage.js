@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import EditDeletePostForm from './EditDeletePostForm';
 import {loadPostDeatils, editPost} from '../../models/posts';
+import { PropTypes } from 'prop-types';
 
 export default class EditPostPage extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ export default class EditPostPage extends Component {
     }
 
     componentDidMount(){
-        loadPostDeatils(this.props.params.postId, this.onloadSuccess, "edit")
+        loadPostDeatils(this.props.match.params.postId, this.onloadSuccess, "edit")
     }
 
     bindEventHandlers() {
@@ -35,7 +36,6 @@ export default class EditPostPage extends Component {
 
     onChangeHandler(event) {
         event.preventDefault();
-        console.log(event.target.name)
         let newState = {};
         newState[event.target.name] = event.target.value;
         this.setState(newState);
@@ -52,7 +52,7 @@ export default class EditPostPage extends Component {
     onSubmitResponse(response, that) {
         if (response !== undefined) {            
             // Navigate to the Posts page;
-            that.context.router.goBack();
+            that.props.history.goBack();
 
         } else {
             alert("TUK")
@@ -63,7 +63,7 @@ export default class EditPostPage extends Component {
 
     cancelEditDelete(event){
         event.preventDefault();
-        this.context.router.goBack();
+        this.props.history.goBack();
         // this.setState({submitDisabled: false});
     }
 
@@ -93,5 +93,5 @@ export default class EditPostPage extends Component {
 }
 
 EditPostPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {loadUserDetails} from '../../models/user';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+import { PropTypes } from 'prop-types'
 import UserDetailsView from './UserDetails_DeleteView';
 
 export default class UserDetailsPage extends Component{
@@ -30,7 +31,7 @@ export default class UserDetailsPage extends Component{
 
     backBtnClicked(event){
         event.preventDefault();
-        this.context.router.goBack();
+        this.props.history.goBack();
     }
 
     
@@ -55,5 +56,5 @@ export default class UserDetailsPage extends Component{
 }
 
 UserDetailsPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

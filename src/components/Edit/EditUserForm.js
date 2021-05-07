@@ -4,13 +4,10 @@
 import React, {Component} from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 
-// import '../styles/buttons.css';
+import '../../styles/buttons.css';
 
 export default class EditDeleteUserForm extends Component {
     render() {
-        // let isDeletedInverseValue = this.props.isDeleted === 'false' ? 'true' : 'false'
-        // console.log("Normal: " + this.props.isDeleted)
-        // console.log("Inverse: " + isDeletedInverseValue)
 
         return (
             <div className="container">

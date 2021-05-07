@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {logout} from '../../models/user';
+import { PropTypes } from 'prop-types';
 
 export default class LogoutPage extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ export default class LogoutPage extends Component {
     onSubmitResponse(response) {
         if (response === true) {
             // Navigate away from login page
-            this.context.router.push('/');
+            this.props.history.push('/');
 
         } else {
             // Something went wrong, let the user know
@@ -31,5 +32,5 @@ export default class LogoutPage extends Component {
 }
 
 LogoutPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

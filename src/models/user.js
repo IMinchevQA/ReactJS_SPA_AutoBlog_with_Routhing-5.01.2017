@@ -1,6 +1,6 @@
 import * as requester from './requester';
-import observer from './observer';
-
+import observer from './observer';import { useHistory } from "react-router-dom";
+const history = useHistory;
 
 function saveSession(userInfo) {
     let userAuth = userInfo._kmd.authtoken;

@@ -47,7 +47,6 @@ function findMostVisitedPosts(callback){
             let arrRequests = []
             let postsRecordsSortedByVisit_Date = response.sort(sortPosts).reverse().slice(0,5);
             let sortedPosts = []
-            //console.log(postsRecordsSortedByVisit_Date)
 
             //Generating 5 separate 'GET' requests and save them in the array 'arrRequests'
             for(let element of postsRecordsSortedByVisit_Date){

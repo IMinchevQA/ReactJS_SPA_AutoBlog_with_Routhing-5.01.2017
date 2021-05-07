@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Team from './Team';
 import {loadTeams} from '../../models/team';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 //import observer from '../../models/observer';
 
 export default class CatalogPage extends Component {

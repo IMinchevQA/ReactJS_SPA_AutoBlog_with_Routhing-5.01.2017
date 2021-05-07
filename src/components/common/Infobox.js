@@ -68,17 +68,13 @@ export default class Infobox extends Component {
     }
 
     showError(errorMsg) {
-        // console.log(errorMsg)
         this.setState({ message: errorMsg, style: 'error', visible: true });
     }
 
     render() {
-        // console.log(this.state.visible);
         if (!this.state.visible) {
-            // console.log("Invisible")
             return null;
         } else {
-            // console.log("Visible")
 
             let className = 'infobox';
             switch (this.state.style) {

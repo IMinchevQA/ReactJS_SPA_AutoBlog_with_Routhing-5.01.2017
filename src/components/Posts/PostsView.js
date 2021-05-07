@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 export default class PostsView extends Component{
     render(){
         let currentPage = this.props.currentPage;
         let countPages = this.props.countPages;
-        // let
+
         let postRows = this.props.posts.map(post =>
             <tr key={post._id}>
                 <td>{post.title}</td>
@@ -53,7 +53,7 @@ export default class PostsView extends Component{
 
     getActions(post, userId) {
         let role = this.props.role;
-        let editPostLink = <Link to={"/editPost/" + post._id} data-postId={post._id} className="btn btn-lg btn-primary btn-block" style={{width:'110px',
+        let editPostLink = <Link to={"/editPost/" + post._id} data-postid={post._id} className="btn btn-lg btn-primary btn-block" style={{width:'110px',
                     height:'35px', paddingTop:'5px'}}>Edit post</Link>
         let deletePostLink = <Link to={"/deletePost/" + post._id} className="btn btn-lg btn-primary btn-block" style={{width:'110px',
                     height:'35px', paddingLeft:'7px', paddingTop:'5px'}}>Delete post</Link>

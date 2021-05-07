@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {loadUserDetails, editUser} from '../../models/user';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+import { PropTypes } from 'prop-types';
 import UserDeleteView from '../AdminPanelAndUsers/UserDetails_DeleteView';
 
 export default class DeleteUserPage extends Component{
@@ -48,7 +49,7 @@ export default class DeleteUserPage extends Component{
     onSubmitResponse(response, that){
         if (response !== undefined) {
             // Navigate to the Posts page;
-            that.context.router.goBack();
+            that.props.history.goBack();
 
         } else {
             // Something went wrong, let the user try again
@@ -58,7 +59,7 @@ export default class DeleteUserPage extends Component{
 
     cancelBtnClicked(event){
         event.preventDefault();
-        this.context.router.goBack();
+        that.props.history.goBack();
     }
 
 
@@ -86,5 +87,5 @@ export default class DeleteUserPage extends Component{
 }
 
 DeleteUserPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

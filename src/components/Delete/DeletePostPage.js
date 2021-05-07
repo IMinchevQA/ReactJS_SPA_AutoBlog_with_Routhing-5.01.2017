@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {loadPostDeatils, deletePost} from '../../models/posts';
 import EditDeletePostForm from '../Edit/EditDeletePostForm';
+import { PropTypes } from 'prop-types';
 
 export default class DeletePostPage extends Component{
     constructor(props){
@@ -10,7 +11,7 @@ export default class DeletePostPage extends Component{
     }
 
     componentDidMount(){
-        loadPostDeatils(this.props.params.postId, this.onloadSuccess, "delete")
+        loadPostDeatils(this.props.match.params.postId, this.onloadSuccess, "delete")
     }
 
     bindEventHandlers(){
@@ -40,7 +41,7 @@ export default class DeletePostPage extends Component{
     onSubmitResponse(response, that){
         if(response[1].count === 1){
             //Navigate to the Posts page.
-            that.context.router.goBack();
+            that.props.history.goBack();
         } else {
             //Something went wrong, the user should refresh the page and try again.
             this.setState({submitDisabled:true});
@@ -49,7 +50,7 @@ export default class DeletePostPage extends Component{
 
     cancelEditDelete(event){
         event.preventDefault();
-        this.context.router.goBack();
+        this.props.history.goBack();
     }
 
     render(){
@@ -78,5 +79,5 @@ export default class DeletePostPage extends Component{
 }
 
 DeletePostPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 };

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CreatePostForm from '../Edit/EditDeletePostForm';
 import {createPost} from '../../models/posts';
+import { PropTypes } from 'prop-types';
 
 export default class CreatePostPage extends Component{
     constructor(props){
@@ -32,20 +33,19 @@ export default class CreatePostPage extends Component{
     }
 
     onSubmitResponse(response){
-        console.log(response)
        if(response !== undefined){
            //Navigate to the posts page
            this.setState({submitDisabled: true});
-           this.context.router.goBack();
+           this.props.history.goBack();
        } else {
            //Something went wrong, let the user try again
-           this.context.router.push('/');
+           this.props.history.push('/');
        }
     }
 
     cancelCreatePost(event){
         event.preventDefault();
-        this.context.router.goBack();
+        this.props.history.goBack();
         this.setState({submitDisabled:false})
     }
 
@@ -77,5 +77,5 @@ export default class CreatePostPage extends Component{
 
 
 CreatePostPage.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 }

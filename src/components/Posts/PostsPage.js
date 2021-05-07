@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {loadPosts} from '../../models/posts';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+import { PropTypes } from 'prop-types';
 import PostsView from './PostsView';
 
 export default class AllPosts extends Component {
@@ -24,7 +25,7 @@ export default class AllPosts extends Component {
     onloadSuccess(response) {
         //Display posts
         let postsToDisplay = response.sort(this.sortFunction);
-        let currentPage = this.props.params['postsPage'];
+        let currentPage = this.props.match.params['postsPage'];
         let startPostNumber = this.state.postsPerPage*(currentPage - 1)
         let countPages = Math.ceil(Number(postsToDisplay.length) / this.state.postsPerPage);
         this.setState({posts: postsToDisplay, startPostNumber: startPostNumber, countPages:countPages, currentPage:currentPage});
@@ -52,16 +53,12 @@ export default class AllPosts extends Component {
         let that = this
         switch (pagePicked){
             case 0:
-                this.context.router.push('/posts/' + (Number(this.state.currentPage) - 1));
-                // this.setState({currentPage: Number(this.state.currentPage) - 1, startPostNumber: this.state.postsPerPage*(this.state.currentPage - 2)})
-                //     setTimeout(function(){console.log(that.state)}, 1000);
+                this.props.history.push('/posts/' + (Number(this.state.currentPage) - 1));
                 setTimeout(() =>this.onloadSuccess(that.state.posts), 100)
 
                 break;
             case (this.state.countPages + 1):
-                this.context.router.push('/posts/' + (Number(this.state.currentPage) + 1));
-                // this.setState({currentPage: (Number(this.state.currentPage) + 1), startPostNumber: this.state.postsPerPage*(this.state.currentPage)})
-                //     setTimeout(function(){console.log(that.state)}, 1000)
+                this.props.history.push('/posts/' + (Number(this.state.currentPage) + 1));
                     setTimeout(()=>this.onloadSuccess(that.state.posts), 100)
                 break;
             default:
@@ -114,7 +111,7 @@ export default class AllPosts extends Component {
 }
 
 AllPosts.contextTypes = {
-    router: React.PropTypes.object
+    router: PropTypes.object
 }
 
     /*render() {
