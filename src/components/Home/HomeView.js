@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import '../../styles/Forms-Style.css'
-import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
-import '../../styles/HomePage-Style.css'
+import '../../styles/Forms-Style.css';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../../styles/HomePage-Style.scss';
 import {Link} from 'react-router-dom';
 
 export default class HomeView extends Component{
@@ -21,17 +21,17 @@ export default class HomeView extends Component{
                 <li key={index}>{this.getActions('', this.props.isLogged, 'mostVisitedPosts', element, index)}</li>
             )
             mostVisitedPostsList = (
-                <aside>
+                <div className='most-visited-posts'>
                     <header className="recommended">
                         <h3>5 Most Viewed Posts</h3>
                     </header>
                     <hr/>
-                    <div className="body">
+                    <div className="list-wrapper">
                         <ul className="list">
                             {mostVisited}
                         </ul>
                     </div>
-                </aside>
+                </div>
             )
         } else {
             mostVisitedPostsList = '';
@@ -39,9 +39,11 @@ export default class HomeView extends Component{
         return(
             <div className="home-view">
                 <h1><span>Auto<span>Blog</span></span></h1>
-                {mostVisitedPostsList}
-                <div className="home-posts-table">
-                    {postsViewed}
+                <div className="posts-wrapper">
+                    {mostVisitedPostsList}
+                    <div className="home-posts-table">
+                        {postsViewed}
+                    </div>
                 </div>
             </div>
         )   
